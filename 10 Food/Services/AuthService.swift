@@ -7,15 +7,6 @@
 
 import Foundation
 
-struct User {
-    let phone: String
-}
-
-struct Credential: Hashable, Codable {
-    let phone: String
-    let password: String
-}
-
 protocol CredentialStorage {
     func save(_ credential: Credential)
     func getCredential() -> Credential?

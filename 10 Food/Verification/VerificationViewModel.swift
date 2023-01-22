@@ -47,7 +47,7 @@ class VerificationViewModelImpl: VerificationViewModel {
         
         do {
             let user = try authService.signUp(phone: phone, code: code)
-            homeViewModel = HomeViewModelImpl(user: user)
+            initializeHomeViewModel(with: user)
         } catch {
             verificationError = error.localizedDescription
         }
@@ -57,5 +57,10 @@ class VerificationViewModelImpl: VerificationViewModel {
         verificationError = nil
         verificationCode = nil
         authService.sendVerificationCode(phone: phone)
+    }
+    
+    private func initializeHomeViewModel(with user: User) {
+        let dataSource = FoodGroupDataSource()
+        homeViewModel = HomeViewModelImpl(user: user, dataSource: dataSource)
     }
 }

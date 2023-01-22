@@ -13,6 +13,8 @@ class IngredientsViewController: UIViewController {
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var ingredientsStackView: UIStackView!
     
+    var viewModel: IngredientsViewModel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         

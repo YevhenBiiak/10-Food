@@ -8,14 +8,27 @@
 import Foundation
 
 protocol HomeViewModel {
-    
+    var foodCount: Int { get }
+    func cellViewModel(at indexPath: IndexPath) -> HomeViewCellViewModel
 }
 
 class HomeViewModelImpl: HomeViewModel {
     
-    private let user: User
+    var foodCount: Int {
+        foodGroups.count
+    }
     
-    init(user: User) {
+    private let user: User
+    private var foodGroups: [FoodGroup] = []
+    
+    init(user: User, dataSource: DataSource<FoodGroup>) {
         self.user = user
+        dataSource.obtainData { [weak self] food in
+            self?.foodGroups = food
+        }
+    }
+    
+    func cellViewModel(at indexPath: IndexPath) -> HomeViewCellViewModel {
+        FoodCellViewModelImpl(foodGroup: foodGroups[indexPath.row])
     }
 }
