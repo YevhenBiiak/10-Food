@@ -10,6 +10,7 @@ import Foundation
 protocol VerificationViewModel {
     var verificationError: String? { get }
     var verificationCode: String? { get }
+    var homeViewModel: HomeViewModel? { get }
     var onUpdate: ((VerificationViewModel) -> Void)? { get set }
     func codeChanged(code: String?)
     func resentCode()
@@ -21,6 +22,9 @@ class VerificationViewModelImpl: VerificationViewModel {
         didSet { onUpdate?(self) }
     }
     var verificationCode: String? {
+        didSet { onUpdate?(self) }
+    }
+    var homeViewModel: HomeViewModel? {
         didSet { onUpdate?(self) }
     }
     var onUpdate: ((VerificationViewModel) -> Void)? {
@@ -42,8 +46,8 @@ class VerificationViewModelImpl: VerificationViewModel {
         guard let code = verificationCode, code.count == 4 else { return }
         
         do {
-            try authService.signUp(phone: phone, code: code)
-            print("Verification is successful")
+            let user = try authService.signUp(phone: phone, code: code)
+            homeViewModel = HomeViewModelImpl(user: user)
         } catch {
             verificationError = error.localizedDescription
         }

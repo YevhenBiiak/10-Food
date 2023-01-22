@@ -7,6 +7,10 @@
 
 import Foundation
 
+struct User {
+    let phone: String
+}
+
 struct Credential: Hashable, Codable {
     let phone: String
     let password: String
@@ -23,8 +27,9 @@ protocol NotificationService {
 }
 
 protocol AuthService {
-    func signIn(phone: String, password: String) throws
-    func signUp(phone: String, code: String) throws
+    func currentUser() -> User?
+    func signIn(phone: String, password: String) throws -> User
+    func signUp(phone: String, code: String) throws -> User
     func sendVerificationCode(phone: String)
 }
 
@@ -41,12 +46,17 @@ class AuthServiceImpl: AuthService {
         self.notificationService = notificationService
     }
     
-    func signIn(phone: String, password: String) throws {
+    func currentUser() -> User? {
+        let credential = credentialStorage.getCredential()
+        return credential == nil ? nil : User(phone: credential!.phone)
+    }
+    
+    func signIn(phone: String, password: String) throws -> User {
         let credential = credentialStorage.getCredential()
         
         switch (credential?.phone, credential?.password) {
         case (phone, password):
-            return
+            return User(phone: phone)
         case (phone, _), (_, password):
             throw AuthError.wrongPhoneOrPassowrd
         default:
@@ -54,18 +64,19 @@ class AuthServiceImpl: AuthService {
         }
     }
     
-    func signUp(phone: String, code: String) throws {
+    func signUp(phone: String, code: String) throws -> User {
         guard phone == phoneToVerification, code == verificationCode else {
             throw AuthError.incorrectVerificationCode
         }
         
         // generate password
         let password = String("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890".shuffled().prefix(4))
+        let credential = Credential(phone: phone, password: password)
         
+        credentialStorage.save(credential)
         notificationService.notify(phone: phone, withTitle: "Your password for 10 Food App", message: password)
         
-        let credential = Credential(phone: phone, password: password)
-        credentialStorage.save(credential)
+        return User(phone: phone)
     }
     
     func sendVerificationCode(phone: String) {
@@ -73,13 +84,7 @@ class AuthServiceImpl: AuthService {
         
         // generate verification code
         verificationCode = "\(Int.random(in: 1000...9999))"
-        
         notificationService.notify(phone: phone, withTitle: "Verification Code", message: verificationCode!)
-    }
-    
-    func verify(phone: String, code: String) throws {
-        
-        
     }
 }
 

@@ -7,10 +7,15 @@
 
 import Foundation
 
-class HomeViewModelImpl: HomeViewModel {
+protocol HomeViewModel {
     
 }
 
-protocol HomeViewModel {
+class HomeViewModelImpl: HomeViewModel {
     
+    private let user: User
+    
+    init(user: User) {
+        self.user = user
+    }
 }

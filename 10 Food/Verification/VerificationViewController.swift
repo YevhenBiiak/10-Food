@@ -23,14 +23,13 @@ class VerificationViewController: UIViewController {
         super.viewDidLoad()
         
         viewModel.onUpdate = { [weak self] viewModel in
-            guard let self else { return }
-            self.transparentСodeField.text = viewModel.verificationCode
-            self.updateLabel(self.firstNumberLabel, with: viewModel.verificationCode?[0])
-            self.updateLabel(self.secondNumberLabel, with: viewModel.verificationCode?[1])
-            self.updateLabel(self.thirdNumberLabel, with: viewModel.verificationCode?[2])
-            self.updateLabel(self.fourthNumberLabel, with: viewModel.verificationCode?[3])
+            self?.updateVirificationCodeView(with: viewModel.verificationCode)
             if let error = viewModel.verificationError {
+                // shake animation
                 print(error)
+            }
+            if let homeViewModel = viewModel.homeViewModel {
+                self?.presentHomeViewController(with: homeViewModel)
             }
         }
         
@@ -53,9 +52,26 @@ class VerificationViewController: UIViewController {
         viewModel.resentCode()
     }
     
-    private func updateLabel(_ label: UILabel, with text: String?) {
-        label.isHidden = text == nil
-        label.text = text
+    private func updateVirificationCodeView(with code: String?) {
+        transparentСodeField.text = code
+        
+        updateLabel(firstNumberLabel, with: code?[0])
+        updateLabel(secondNumberLabel, with: code?[1])
+        updateLabel(thirdNumberLabel, with: code?[2])
+        updateLabel(fourthNumberLabel, with: code?[3])
+        
+        func updateLabel(_ label: UILabel, with text: String?) {
+            label.isHidden = text == nil
+            label.text = text
+        }
+    }
+    
+    private func presentHomeViewController(with viewModel: HomeViewModel) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let homeViewController = storyboard.instantiateViewController(withIdentifier: "HomeViewController")
+        
+        (homeViewController as? HomeViewController)?.viewModel = viewModel
+        navigationController?.setViewControllers([homeViewController], animated: true)
     }
 }
 

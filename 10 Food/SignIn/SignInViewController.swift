@@ -63,11 +63,10 @@ extension SignInViewController {
     
     private func presentHomeViewController(with viewModel: HomeViewModel) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let homeViewController = storyboard.instantiateViewController(withIdentifier: "HomeViewController")
         
-        if let homeViewController = storyboard.instantiateViewController(withIdentifier: "HomeViewController") as? HomeViewController {
-            homeViewController.viewModel = viewModel
-            navigationController?.setViewControllers([homeViewController], animated: true)
-        }
+        (homeViewController as? HomeViewController)?.viewModel = viewModel
+        navigationController?.setViewControllers([homeViewController], animated: true)
     }
     
     func setTopInsetForContentScrollView() {
