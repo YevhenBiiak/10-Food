@@ -1,0 +1,36 @@
+{
+  "food_groups": [
+    {
+      "id": 1,
+      "name": "Pizza",
+      "description": "Try pizza cooked in a woodfire oven",
+      "image_url": "google.com",
+      "food_items": [
+        {
+          "id": 1,
+          "name": "PARMA",
+          "description": "tomato sauce, mozarella, prosciutto, arugula, parmesan",
+          "weight": 515,
+          "price": 141,
+          "image_url": "google.com"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Chinese food",
+      "description": "One of the oldest and most diverse cuisines in the world",
+      "image_url": "google.com",
+      "food_items": [
+        {
+          "id": 1,
+          "name": "Sunomono",
+          "description": "Cucumber, Soy Sauce, Vinegar, Nori",
+          "weight": 350,
+          "price": 100,
+          "image_url": "google.com"
+        }
+      ]
+    }
+  ]
+}
