@@ -55,7 +55,6 @@ class SignInViewModelImpl: SignInViewModel {
     }
     
     private func initializeHomeViewModel(with user: User) {
-        let dataSource = FoodGroupDataSource()
-        homeViewModel = HomeViewModelImpl(user: user, dataSource: dataSource)
+        homeViewModel = HomeViewModelImpl(user: user)
     }
 }

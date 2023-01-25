@@ -53,29 +53,27 @@
                                                         <constraint firstAttribute="width" secondItem="7Q9-Qo-zXv" secondAttribute="height" multiplier="1:1" id="UUb-zY-uBV"/>
                                                     </constraints>
                                                 </imageView>
-                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="gr9-nw-qBC">
-                                                    <rect key="frame" x="134" y="14" width="212.66666666666663" height="92"/>
-                                                    <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pizza" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uER-rU-Rjr">
-                                                            <rect key="frame" x="0.0" y="0.0" width="212.66666666666666" height="42"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="35"/>
-                                                            <color key="textColor" name="TitleColor"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Try pizza cooked in a woodfire oven" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rCJ-Re-0B8">
-                                                            <rect key="frame" x="0.0" y="50" width="212.66666666666666" height="42"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                            <color key="textColor" systemColor="secondaryLabelColor"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
-                                                    </subviews>
-                                                </stackView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pizza" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uER-rU-Rjr">
+                                                    <rect key="frame" x="134" y="19" width="220.66666666666663" height="36"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="30"/>
+                                                    <color key="textColor" name="TitleColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Try pizza cooked in a woodfire oven" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rCJ-Re-0B8">
+                                                    <rect key="frame" x="134" y="67" width="220.66666666666663" height="38.333333333333343"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                    <color key="textColor" systemColor="secondaryLabelColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="7Q9-Qo-zXv" firstAttribute="top" secondItem="Tlf-CK-0Jh" secondAttribute="topMargin" id="8xO-nL-Xrt"/>
-                                                <constraint firstAttribute="trailing" secondItem="gr9-nw-qBC" secondAttribute="trailing" constant="16" id="AwW-2N-Ulp"/>
-                                                <constraint firstItem="gr9-nw-qBC" firstAttribute="centerY" secondItem="7Q9-Qo-zXv" secondAttribute="centerY" id="hyt-tk-NWs"/>
-                                                <constraint firstItem="gr9-nw-qBC" firstAttribute="leading" secondItem="7Q9-Qo-zXv" secondAttribute="trailing" constant="16" id="iAy-vA-yiy"/>
+                                                <constraint firstItem="uER-rU-Rjr" firstAttribute="leading" secondItem="7Q9-Qo-zXv" secondAttribute="trailing" constant="16" id="DYR-MC-oK7"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="rCJ-Re-0B8" secondAttribute="trailing" id="Dcr-fJ-ki8"/>
+                                                <constraint firstItem="uER-rU-Rjr" firstAttribute="top" secondItem="Tlf-CK-0Jh" secondAttribute="topMargin" constant="8" id="GrS-Gu-cjv"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="uER-rU-Rjr" secondAttribute="trailing" id="HZg-mC-7nQ"/>
+                                                <constraint firstItem="rCJ-Re-0B8" firstAttribute="leading" secondItem="7Q9-Qo-zXv" secondAttribute="trailing" constant="16" id="eBx-d1-j8S"/>
+                                                <constraint firstItem="rCJ-Re-0B8" firstAttribute="top" secondItem="uER-rU-Rjr" secondAttribute="bottom" constant="12" id="ptv-47-GmL"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="7Q9-Qo-zXv" secondAttribute="bottom" id="qFK-Ch-jXk"/>
                                                 <constraint firstItem="7Q9-Qo-zXv" firstAttribute="leading" secondItem="Tlf-CK-0Jh" secondAttribute="leadingMargin" id="rHd-ip-137"/>
                                             </constraints>
@@ -84,7 +82,6 @@
                                             <outlet property="cellImageView" destination="7Q9-Qo-zXv" id="3ec-qy-13d"/>
                                             <outlet property="subtitleLabel" destination="rCJ-Re-0B8" id="xdw-dE-Fdz"/>
                                             <outlet property="titleLabel" destination="uER-rU-Rjr" id="VLt-f1-Wj6"/>
-                                            <segue destination="gxG-FO-wKG" kind="show" id="EWp-TJ-65Y"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -111,10 +108,14 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="tableView" destination="4Kz-8L-OIP" id="sGf-3h-g48"/>
+                        <segue destination="gxG-FO-wKG" kind="show" identifier="ShowMenu" id="xgh-sv-QXm"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1bN-oG-ruF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1416" y="710"/>
+            <point key="canvasLocation" x="1414.5038167938931" y="709.85915492957747"/>
         </scene>
         <!--Pizza-->
         <scene sceneID="De7-17-TTc">

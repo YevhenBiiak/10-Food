@@ -9,7 +9,22 @@ import UIKit
 
 class HomeViewController: UIViewController {
 
+    @IBOutlet weak var tableView: UITableView!
+    
     var viewModel: HomeViewModel!
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        viewModel.onUpdate = { [weak self] viewModel in
+            self?.tableView.reloadData()
+        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let indexPath = sender as? IndexPath, segue.identifier == "ShowMenu" else { return }
+        let menuViewController = segue.destination as? MenuViewController
+        menuViewController?.viewModel = viewModel.menuViewModel(for: indexPath)
+    }
 }
 
 // MARK: - UITableViewDataSource
@@ -33,7 +48,6 @@ extension HomeViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        
+        performSegue(withIdentifier: "ShowMenu", sender: indexPath)
     }
 }
-

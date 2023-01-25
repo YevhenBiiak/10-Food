@@ -19,18 +19,17 @@ class MenuViewController: UIViewController {
     }
 }
 
-
 // MARK: - UITableViewDataSource
 
 extension MenuViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        0
+        viewModel.foodCount
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "MenuViewCell", for: indexPath)
-        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "MenuViewCell", for: indexPath) as! MenuViewCell
+        cell.viewModel = viewModel.cellViewModel(at: indexPath)
         return cell
     }
 }

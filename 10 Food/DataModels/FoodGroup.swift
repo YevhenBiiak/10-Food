@@ -11,5 +11,6 @@ struct FoodGroup: Decodable {
     let id: Int
     let name: String
     let description: String
-    let imageData: Data
+    let imageURL: URL?
+    let foodItems: [FoodItem]
 }

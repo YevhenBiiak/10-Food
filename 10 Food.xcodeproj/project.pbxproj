@@ -20,8 +20,6 @@
 		575BEFBD297D2F7900C80564 /* HomeViewCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 575BEFBC297D2F7900C80564 /* HomeViewCellViewModel.swift */; };
 		575BEFC0297D2F9700C80564 /* MenuViewCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 575BEFBF297D2F9700C80564 /* MenuViewCellViewModel.swift */; };
 		575BEFC3297D2FB500C80564 /* OrderViewCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 575BEFC2297D2FB500C80564 /* OrderViewCellViewModel.swift */; };
-		575BEFC7297D847400C80564 /* BaseDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 575BEFC6297D847400C80564 /* BaseDataSource.swift */; };
-		575BEFC9297D848800C80564 /* FoodGroupDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 575BEFC8297D848800C80564 /* FoodGroupDataSource.swift */; };
 		575BEFCC297D84E600C80564 /* FoodGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 575BEFCB297D84E600C80564 /* FoodGroup.swift */; };
 		575BEFCE297D84EF00C80564 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 575BEFCD297D84EF00C80564 /* User.swift */; };
 		575BEFD0297D850F00C80564 /* Credential.swift in Sources */ = {isa = PBXBuildFile; fileRef = 575BEFCF297D850F00C80564 /* Credential.swift */; };
@@ -31,6 +29,9 @@
 		57BE0ACF29785A460064A96C /* SignInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57BE0ACE29785A460064A96C /* SignInViewModel.swift */; };
 		57BE0AD129785A640064A96C /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57BE0AD029785A640064A96C /* AuthService.swift */; };
 		57BE0AD329792ACF0064A96C /* DefaultsCredentialStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57BE0AD229792ACE0064A96C /* DefaultsCredentialStorage.swift */; };
+		57C84EE82980430A0017E91F /* NetworkRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57C84EE72980430A0017E91F /* NetworkRequest.swift */; };
+		57C84EEA2980431C0017E91F /* ImageRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57C84EE92980431C0017E91F /* ImageRequest.swift */; };
+		57C84EEC298043510017E91F /* FoodRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57C84EEB298043510017E91F /* FoodRequest.swift */; };
 		57E51CC72975898200B428B7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57E51CC62975898200B428B7 /* AppDelegate.swift */; };
 		57E51CC92975898200B428B7 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57E51CC82975898200B428B7 /* SceneDelegate.swift */; };
 		57E51CCB2975898200B428B7 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57E51CCA2975898200B428B7 /* SignInViewController.swift */; };
@@ -61,8 +62,6 @@
 		575BEFBC297D2F7900C80564 /* HomeViewCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewCellViewModel.swift; sourceTree = "<group>"; };
 		575BEFBF297D2F9700C80564 /* MenuViewCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewCellViewModel.swift; sourceTree = "<group>"; };
 		575BEFC2297D2FB500C80564 /* OrderViewCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderViewCellViewModel.swift; sourceTree = "<group>"; };
-		575BEFC6297D847400C80564 /* BaseDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseDataSource.swift; sourceTree = "<group>"; };
-		575BEFC8297D848800C80564 /* FoodGroupDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodGroupDataSource.swift; sourceTree = "<group>"; };
 		575BEFCB297D84E600C80564 /* FoodGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodGroup.swift; sourceTree = "<group>"; };
 		575BEFCD297D84EF00C80564 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		575BEFCF297D850F00C80564 /* Credential.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Credential.swift; sourceTree = "<group>"; };
@@ -72,6 +71,9 @@
 		57BE0ACE29785A460064A96C /* SignInViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewModel.swift; sourceTree = "<group>"; };
 		57BE0AD029785A640064A96C /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
 		57BE0AD229792ACE0064A96C /* DefaultsCredentialStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultsCredentialStorage.swift; sourceTree = "<group>"; };
+		57C84EE72980430A0017E91F /* NetworkRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkRequest.swift; sourceTree = "<group>"; };
+		57C84EE92980431C0017E91F /* ImageRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageRequest.swift; sourceTree = "<group>"; };
+		57C84EEB298043510017E91F /* FoodRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodRequest.swift; sourceTree = "<group>"; };
 		57E51CC32975898200B428B7 /* 10 Food.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "10 Food.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		57E51CC62975898200B428B7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		57E51CC82975898200B428B7 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -128,15 +130,6 @@
 			path = Cell;
 			sourceTree = "<group>";
 		};
-		575BEFC5297D843F00C80564 /* DataSources */ = {
-			isa = PBXGroup;
-			children = (
-				575BEFC6297D847400C80564 /* BaseDataSource.swift */,
-				575BEFC8297D848800C80564 /* FoodGroupDataSource.swift */,
-			);
-			path = DataSources;
-			sourceTree = "<group>";
-		};
 		575BEFCA297D84C500C80564 /* DataModels */ = {
 			isa = PBXGroup;
 			children = (
@@ -151,11 +144,22 @@
 		57BE0ACD297859550064A96C /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				57C84EE6298042FB0017E91F /* Networking */,
 				57BE0AD029785A640064A96C /* AuthService.swift */,
 				5784D9FA297BFCD6006BE261 /* AlertNotificationService.swift */,
 				57BE0AD229792ACE0064A96C /* DefaultsCredentialStorage.swift */,
 			);
 			path = Services;
+			sourceTree = "<group>";
+		};
+		57C84EE6298042FB0017E91F /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				57C84EE72980430A0017E91F /* NetworkRequest.swift */,
+				57C84EE92980431C0017E91F /* ImageRequest.swift */,
+				57C84EEB298043510017E91F /* FoodRequest.swift */,
+			);
+			path = Networking;
 			sourceTree = "<group>";
 		};
 		57E51CBA2975898200B428B7 = {
@@ -180,7 +184,6 @@
 				57E51CC62975898200B428B7 /* AppDelegate.swift */,
 				57E51CC82975898200B428B7 /* SceneDelegate.swift */,
 				575BEFCA297D84C500C80564 /* DataModels */,
-				575BEFC5297D843F00C80564 /* DataSources */,
 				57E51CDA2975964000B428B7 /* SignIn */,
 				57E51CE12976BC9C00B428B7 /* SignUp */,
 				57E51CE22976BCA200B428B7 /* Verification */,
@@ -349,7 +352,6 @@
 			files = (
 				575BEFBB297D2F2800C80564 /* OrderViewModel.swift in Sources */,
 				573B2E5B297BE74D00BB0F29 /* UIResponder + .swift in Sources */,
-				575BEFC7297D847400C80564 /* BaseDataSource.swift in Sources */,
 				57E51CCB2975898200B428B7 /* SignInViewController.swift in Sources */,
 				575BEFCE297D84EF00C80564 /* User.swift in Sources */,
 				575BEFB3297D2B9D00C80564 /* MenuViewCell.swift in Sources */,
@@ -357,15 +359,16 @@
 				57300C03297940E9008EF33D /* SignUpViewModel.swift in Sources */,
 				575BEFD2297D8F1700C80564 /* FoodItem.swift in Sources */,
 				575BEFB5297D2E9A00C80564 /* MenuViewModel.swift in Sources */,
-				575BEFC9297D848800C80564 /* FoodGroupDataSource.swift in Sources */,
 				575BEFC0297D2F9700C80564 /* MenuViewCellViewModel.swift in Sources */,
 				57E51CF12978204000B428B7 /* UIViewController + .swift in Sources */,
 				57E51CF32978204700B428B7 /* UIApplication + .swift in Sources */,
 				575BEFBD297D2F7900C80564 /* HomeViewCellViewModel.swift in Sources */,
 				57E51CE62976BF4C00B428B7 /* VerificationViewController.swift in Sources */,
 				57E51CEA2976BF5E00B428B7 /* MenuViewController.swift in Sources */,
+				57C84EE82980430A0017E91F /* NetworkRequest.swift in Sources */,
 				575BEFD0297D850F00C80564 /* Credential.swift in Sources */,
 				575BEFCC297D84E600C80564 /* FoodGroup.swift in Sources */,
+				57C84EEA2980431C0017E91F /* ImageRequest.swift in Sources */,
 				57BE0AD129785A640064A96C /* AuthService.swift in Sources */,
 				575BEFB7297D2EEC00C80564 /* IngredientsViewModel.swift in Sources */,
 				57E51CE42976BF3F00B428B7 /* SignUpViewController.swift in Sources */,
@@ -373,6 +376,7 @@
 				57BE0AD329792ACF0064A96C /* DefaultsCredentialStorage.swift in Sources */,
 				57E51CEC2976BF8700B428B7 /* IngredientsViewController.swift in Sources */,
 				5784D9FB297BFCD6006BE261 /* AlertNotificationService.swift in Sources */,
+				57C84EEC298043510017E91F /* FoodRequest.swift in Sources */,
 				57BE0ACF29785A460064A96C /* SignInViewModel.swift in Sources */,
 				57E51CC92975898200B428B7 /* SceneDelegate.swift in Sources */,
 				57E51CE82976BF5400B428B7 /* HomeViewController.swift in Sources */,

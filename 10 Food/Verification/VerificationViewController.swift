@@ -26,7 +26,7 @@ class VerificationViewController: UIViewController {
             self?.updateVirificationCodeView(with: viewModel.verificationCode)
             if let error = viewModel.verificationError {
                 // shake animation
-                print(error)
+                UIApplication.shared.window?.rootViewController?.showAlert(title: "Error", message: error)
             }
             if let homeViewModel = viewModel.homeViewModel {
                 self?.presentHomeViewController(with: homeViewModel)
