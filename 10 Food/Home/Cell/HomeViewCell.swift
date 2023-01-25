@@ -17,15 +17,13 @@ class HomeViewCell: UITableViewCell {
         didSet {
             titleLabel.text = viewModel.title
             subtitleLabel.text = viewModel.subtitle
+            cellImageView.image = viewModel.image
+            
             viewModel.onUpdate = { [weak self] viewModel in
                 if let error = viewModel.error {
                     UIApplication.shared.window?.rootViewController?.showAlert(title: "Error", message: error)
                 }
-                if let image = viewModel.image {
-                    self?.cellImageView.image = image
-                } else {
-                    self?.cellImageView.image = nil
-                }
+                self?.cellImageView.image = viewModel.image
             }
         }
     }

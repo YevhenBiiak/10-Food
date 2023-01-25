@@ -10,30 +10,29 @@ import Foundation
 protocol NetworkRequest {
     associatedtype Model
     var url: URL { get }
-    func decode(_ data: Data) -> Result<Model, Error>
+    func decode(_ data: Data) throws -> Model
     func execute(withCompletion completion: @escaping (Result<Model, Error>) -> Void)
 }
 
 extension NetworkRequest {
     func execute(withCompletion completion: @escaping (Result<Model, Error>) -> Void) {
-        let task = URLSession.shared.dataTask(with: url) { (data, response, error) -> Void in
-            if let error {
-                // check internet connection
-                return completion(.failure(error))
-            }
-            
-            if let statusCode = (response as? HTTPURLResponse)?.statusCode, statusCode != 200 {
-                return completion(.failure(NetworkRequestError.badRequest(statusCode: statusCode)))
-            }
-            
-            if let data  {
-                let result = decode(data)
-                DispatchQueue.main.async {
-                    completion(result)
+        Task {
+            do {
+                let (data, response) = try await URLSession.shared.data(from: url)
+                
+                if let statusCode = (response as? HTTPURLResponse)?.statusCode, statusCode != 200 {
+                    DispatchQueue.main.async {
+                        completion(.failure(NetworkRequestError.badRequest(statusCode: statusCode)))
+                    }
                 }
+                
+                let result = Result { try decode(data) }
+                DispatchQueue.main.async { completion(result) }
+            } catch {
+                // check internet connection
+                DispatchQueue.main.async { completion(.failure(error)) }
             }
         }
-        task.resume()
     }
 }
 

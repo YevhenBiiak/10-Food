@@ -11,11 +11,11 @@ struct FoodRequest: NetworkRequest {
     
     var url: URL = URL(string: "https://raw.githubusercontent.com/YevhenBiiak/10-Food/main/Resources/FoodData.json")!
     
-    func decode(_ data: Data) -> Result<[FoodGroup], Error> {
+    func decode(_ data: Data) throws -> [FoodGroup] {
         if let wrapper = try? JSONDecoder().decode(Wrapper.self, from: data) {
-            return .success(wrapper.foodGroups)
+            return wrapper.foodGroups
         }
-        return .failure(NetworkRequestError.decodingError)
+        throw NetworkRequestError.decodingError
     }
 }
 

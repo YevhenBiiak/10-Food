@@ -9,19 +9,20 @@ import Foundation
 
 class DefaultsCredentialStorage: CredentialStorage {
     
+    private let defaults = UserDefaults.standard
     private lazy var key = String(describing: self)
     
     func save(_ credential: Credential) {
         let data = try? JSONEncoder().encode(credential)
-        UserDefaults.standard.set(data, forKey: key)
+        defaults.set(data, forKey: key)
     }
     
     func getCredential() -> Credential? {
-        let data = UserDefaults.standard.object(forKey: key) as? Data
+        let data = defaults.object(forKey: key) as? Data
         return try? JSONDecoder().decode(Credential.self, from: data ?? Data())
     }
 
     func removeCredential() {
-        UserDefaults.standard.removeObject(forKey: key)
+        defaults.removeObject(forKey: key)
     }
 }

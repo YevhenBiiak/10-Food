@@ -10,6 +10,7 @@ import UIKit
 class HomeViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var cartButton: UIBarButtonItem!
     
     var viewModel: HomeViewModel!
     
@@ -25,6 +26,12 @@ class HomeViewController: UIViewController {
         let menuViewController = segue.destination as? MenuViewController
         menuViewController?.viewModel = viewModel.menuViewModel(for: indexPath)
     }
+    
+    @IBAction func cartButtonTapped(_ sender: UIBarButtonItem) {
+        
+    }
+    
+    @IBAction func unwindToHome(_ segue: UIStoryboardSegue) {}
 }
 
 // MARK: - UITableViewDataSource

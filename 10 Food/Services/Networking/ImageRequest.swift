@@ -10,20 +10,18 @@ import UIKit
 struct ImageRequest {
     var url: URL
     
-    init(url: URL) {
+    init(url: URL ) {
         self.url = url
     }
 }
 
 extension ImageRequest: NetworkRequest {
     
-    typealias Model = UIImage
-    
-    func decode(_ data: Data) -> Result<UIImage, Error> {
+    func decode(_ data: Data) throws -> UIImage {
         if let image = UIImage(data: data) {
-            return .success(image)
+            return image
         } else {
-            return .failure(NetworkRequestError.decodingError)
+            throw NetworkRequestError.decodingError
         }
     }
 }

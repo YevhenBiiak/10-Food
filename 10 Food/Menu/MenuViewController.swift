@@ -9,12 +9,22 @@ import UIKit
 
 class MenuViewController: UIViewController {
 
-    @IBOutlet weak var segmentedControl: UISegmentedControl!
+    @IBOutlet weak var cartButton: UIBarButtonItem!
     
     var viewModel: MenuViewModel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let indexPath = sender as? IndexPath, segue.identifier == "ShowIngredients" else { return }
+        let ingredientsViewController = segue.destination as? IngredientsViewController
+        ingredientsViewController?.viewModel = viewModel.ingredientsViewModel(for: indexPath)
+    }
+    
+    @IBAction func cartButtonTapped(_ sender: UIBarButtonItem) {
         
     }
 }
@@ -40,7 +50,7 @@ extension MenuViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        
+        performSegue(withIdentifier: "ShowIngredients", sender: indexPath)
     }
 }
 
