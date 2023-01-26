@@ -8,11 +8,19 @@
 import UIKit
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
-
+    
+    var ordersRepository: OrdersRepository!
+    var favoritesRepository: FavoritesRepository!
+    
     var window: UIWindow?
-
-
+    
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
+        
+        ordersRepository = OrdersRepository()
+        favoritesRepository = FavoritesRepository()
+        
+        ordersRepository.fetch()
+        favoritesRepository.fetch()
         
         let navigationController = window?.rootViewController as? UINavigationController
         let signInViewController = navigationController?.viewControllers.first as? SignInViewController
@@ -38,8 +46,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
 
     func sceneWillResignActive(_ scene: UIScene) {
-        // Called when the scene will move from an active state to an inactive state.
-        // This may occur due to temporary interruptions (ex. an incoming phone call).
+        ordersRepository.save()
+        favoritesRepository.save()
     }
 
     func sceneWillEnterForeground(_ scene: UIScene) {
@@ -52,8 +60,4 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // Use this method to save data, release shared resources, and store enough scene-specific state information
         // to restore the scene back to its current state.
     }
-
-
 }
-
-

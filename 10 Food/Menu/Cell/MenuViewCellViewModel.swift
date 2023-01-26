@@ -14,8 +14,10 @@ protocol FavoritesManager {
 }
 
 protocol OrdersManager {
-    func add(_ orderItem: OrderItem)
-    func remove(_ orderItem: OrderItem)
+    var cartAmount: Int { get }
+    func add(_ foodItem: FoodItem)
+    func remove(_ foodItem: FoodItem)
+    func count(of foodItem: FoodItem) -> Int
 }
 
 protocol MenuViewCellViewModel {
@@ -25,6 +27,7 @@ protocol MenuViewCellViewModel {
     var price: String { get }
     var image: UIImage? { get }
     var isFavorite: Bool { get }
+    var orderedQty: Int { get }
     var error: String? { get }
     var onUpdate: ((MenuViewCellViewModel) -> Void)? { get set }
     func favoriteButtonTapped()
@@ -43,6 +46,9 @@ class MenuViewCellViewModelImpl: MenuViewCellViewModel {
     var isFavorite: Bool {
         didSet { onUpdate?(self) }
     }
+    var orderedQty: Int {
+        didSet { onUpdate?(self) }
+    }
     var error: String? {
         didSet { onUpdate?(self) }
     }
@@ -51,22 +57,22 @@ class MenuViewCellViewModelImpl: MenuViewCellViewModel {
     }
     
     private let foodItem: FoodItem
-    private let ordersManager: OrdersManager
-    private let favoritesManager: FavoritesManager
+    private let onAddButtonTap: () -> Void
+    private let ordersManager: OrdersManager?
+    private let favoritesManager: FavoritesManager?
     
-    init(foodItem: FoodItem,
-         ordersManager: OrdersManager,
-         favoritesManager: FavoritesManager
-    ) {
+    init(foodItem: FoodItem, onAddButtonTap: @escaping () -> Void) {
         self.foodItem = foodItem
-        self.ordersManager = ordersManager
-        self.favoritesManager = favoritesManager
+        self.onAddButtonTap = onAddButtonTap
+        self.ordersManager = UIApplication.shared.sceneDelegate?.ordersRepository
+        self.favoritesManager = UIApplication.shared.sceneDelegate?.favoritesRepository
         
         title = foodItem.name
         subtitle = foodItem.description
         weight = "\(foodItem.weight) g"
         price = "\(foodItem.price) UAH"
-        isFavorite = favoritesManager.isFavorite(foodItem)
+        isFavorite = favoritesManager?.isFavorite(foodItem) == true
+        orderedQty = ordersManager?.count(of: foodItem) ?? 0
         
         guard let url = foodItem.imageURL else { return }
         let imageRequest = ImageRequest(url: url)
@@ -83,14 +89,15 @@ class MenuViewCellViewModelImpl: MenuViewCellViewModel {
     func favoriteButtonTapped() {
         isFavorite.toggle()
         if isFavorite {
-            favoritesManager.add(foodItem)
+            favoritesManager?.add(foodItem)
         } else {
-            favoritesManager.remove(foodItem)
+            favoritesManager?.remove(foodItem)
         }
     }
     
     func addButtonTapped() {
-        let orderItem = OrderItem(foodItem: foodItem, amount: 1)
-        ordersManager.add(orderItem)
+        ordersManager?.add(foodItem)
+        orderedQty = ordersManager?.count(of: foodItem) ?? 0
+        onAddButtonTap()
     }
 }

@@ -29,7 +29,7 @@ extension NetworkRequest {
                 let result = Result { try decode(data) }
                 DispatchQueue.main.async { completion(result) }
             } catch {
-                // check internet connection
+                // TODO: check internet connection
                 DispatchQueue.main.async { completion(.failure(error)) }
             }
         }

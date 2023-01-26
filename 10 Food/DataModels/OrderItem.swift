@@ -10,5 +10,5 @@ import Foundation
 struct OrderItem: Identifiable, Codable {
     var id = UUID().uuidString
     let foodItem: FoodItem
-    let amount: Int
+    let qty: Int
 }

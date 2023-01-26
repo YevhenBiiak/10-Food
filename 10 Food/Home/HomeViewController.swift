@@ -10,15 +10,26 @@ import UIKit
 class HomeViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var cartAmountLabel: UILabel!
     @IBOutlet weak var cartButton: UIBarButtonItem!
     
     var viewModel: HomeViewModel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         viewModel.onUpdate = { [weak self] viewModel in
+            if let error = viewModel.error {
+                UIApplication.shared.window?.rootViewController?.showAlert(title: "Error", message: error)
+            }
+            self?.cartAmountLabel.text = viewModel.cartAmount
             self?.tableView.reloadData()
         }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        cartAmountLabel.text = viewModel.cartAmount
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

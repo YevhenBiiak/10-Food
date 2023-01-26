@@ -16,6 +16,10 @@ extension UIApplication {
         UIApplication.shared.connectedScenes.first as? UIWindowScene
     }
     
+    var sceneDelegate: SceneDelegate? {
+        scene?.delegate as? SceneDelegate
+    }
+    
     var screen: UIScreen? {
         scene?.screen
     }

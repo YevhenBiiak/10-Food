@@ -5,15 +5,12 @@
 //  Created by Yevhen Biiak on 19.01.2023.
 //
 
-import Foundation
-
-protocol FoodDataSource {
-    func obtainData(_ completion: @escaping (Result<[FoodGroup], Error>) -> Void)
-}
+import UIKit
 
 protocol HomeViewModel {
-    var error: String? { get }
+    var cartAmount: String { get }
     var foodCount: Int { get }
+    var error: String? { get }
     var onUpdate: ((HomeViewModel) -> Void)? { get set }
     func cellViewModel(at indexPath: IndexPath) -> HomeViewCellViewModel
     func menuViewModel(for indexPath: IndexPath) -> MenuViewModel
@@ -21,21 +18,30 @@ protocol HomeViewModel {
 
 class HomeViewModelImpl: HomeViewModel {
     
-    var error: String? {
-        didSet { onUpdate?(self) }
+    var cartAmount: String {
+        "\(ordersManager?.cartAmount ?? 0)"
     }
+    
     var foodCount: Int {
         foodGroups.count
     }
+    
+    var error: String? {
+        didSet { onUpdate?(self) }
+    }
+    
     var onUpdate: ((HomeViewModel) -> Void)?
     
     private let user: User
+    private let ordersManager: OrdersManager?
     private var foodGroups: [FoodGroup] = [] {
         didSet { onUpdate?(self) }
     }
     
     init(user: User) {
         self.user = user
+        self.ordersManager = UIApplication.shared.sceneDelegate?.ordersRepository
+        
         obtainData()
     }
     

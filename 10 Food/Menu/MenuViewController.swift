@@ -8,14 +8,19 @@
 import UIKit
 
 class MenuViewController: UIViewController {
-
+    
+    @IBOutlet weak var cartAmountLabel: UILabel!
     @IBOutlet weak var cartButton: UIBarButtonItem!
     
     var viewModel: MenuViewModel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        cartAmountLabel.text = viewModel.cartAmount
         
+        viewModel.onUpdate = { [weak self] viewModel in
+            self?.cartAmountLabel.text = viewModel.cartAmount
+        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

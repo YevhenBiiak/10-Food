@@ -33,7 +33,7 @@ class SignInViewModelImpl: SignInViewModel {
     init(authService: AuthService) {
         self.authService = authService
         if let user = self.authService.currentUser() {
-            initializeHomeViewModel(with: user)
+            homeViewModel = HomeViewModelImpl(user: user)
         }
     }
     
@@ -44,7 +44,7 @@ class SignInViewModelImpl: SignInViewModel {
     func signInButtonTapped(phone: String, password: String) {
         do {
             let user = try authService.signIn(phone: phone, password: password)
-            initializeHomeViewModel(with: user)
+            homeViewModel = HomeViewModelImpl(user: user)
         } catch {
             signInError = error.localizedDescription
         }
@@ -52,9 +52,5 @@ class SignInViewModelImpl: SignInViewModel {
     
     func signUpViewModel() -> SignUpViewModel {
         SignUpViewModelImpl(authService: authService, phone: phone)
-    }
-    
-    private func initializeHomeViewModel(with user: User) {
-        homeViewModel = HomeViewModelImpl(user: user)
     }
 }

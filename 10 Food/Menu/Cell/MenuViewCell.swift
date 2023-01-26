@@ -31,8 +31,15 @@ class MenuViewCell: UITableViewCell {
                 }
                 self?.cellImageView.image = viewModel.image
                 
-                let imageName = viewModel.isFavorite ? "bookmark.fill" : "bookmark"
-                self?.favoriteButton.setImage(UIImage(systemName: imageName), for: .normal)
+                let favoriteImage = viewModel.isFavorite
+                    ? UIImage(systemName: "bookmark.fill")
+                    : UIImage(systemName: "bookmark")
+                self?.favoriteButton.setImage(favoriteImage, for: .normal)
+                
+                let addImage = viewModel.orderedQty > 0
+                    ? UIImage(systemName: "\(viewModel.orderedQty).circle.fill")
+                    : UIImage(systemName: "cart.badge.plus")
+                self?.addButton.setImage(addImage, for: .normal)
             }
         }
     }
