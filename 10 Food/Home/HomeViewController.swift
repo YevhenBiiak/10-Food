@@ -17,6 +17,7 @@ class HomeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        cartAmountLabel.text = viewModel.cartAmount
         
         viewModel.onUpdate = { [weak self] viewModel in
             if let error = viewModel.error {
@@ -25,11 +26,6 @@ class HomeViewController: UIViewController {
             self?.cartAmountLabel.text = viewModel.cartAmount
             self?.tableView.reloadData()
         }
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        cartAmountLabel.text = viewModel.cartAmount
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

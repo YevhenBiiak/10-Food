@@ -8,8 +8,9 @@
 import UIKit
 
 protocol MenuViewModel {
-    var foodCount: Int { get }
+    var title: String { get }
     var cartAmount: String { get }
+    var foodCount: Int { get }
     var onUpdate: ((MenuViewModel) -> Void)? { get set }
     func cellViewModel(at indexPath: IndexPath) -> MenuViewCellViewModel
     func ingredientsViewModel(for indexPath: IndexPath) -> IngredientsViewModel
@@ -17,12 +18,16 @@ protocol MenuViewModel {
 
 class MenuViewModelImpl: MenuViewModel {
     
-    var foodCount: Int {
-        foodGroup.foodItems.count
+    var title: String {
+        foodGroup.name
     }
     
     var cartAmount: String {
         "\(ordersManager?.cartAmount ?? 0)"
+    }
+    
+    var foodCount: Int {
+        foodGroup.foodItems.count
     }
     
     var onUpdate: ((MenuViewModel) -> Void)? {
@@ -35,16 +40,18 @@ class MenuViewModelImpl: MenuViewModel {
     init(foodGroup: FoodGroup) {
         self.foodGroup = foodGroup
         self.ordersManager = UIApplication.shared.sceneDelegate?.ordersRepository
+        self.ordersManager?.observe(self, selector: #selector(ordersListDidChange))
     }
     
     func cellViewModel(at indexPath: IndexPath) -> MenuViewCellViewModel {
-        return MenuViewCellViewModelImpl(foodItem: foodGroup.foodItems[indexPath.row]) { [weak self] in
-            guard let self else { return }
-            self.onUpdate?(self)
-        }
+        return MenuViewCellViewModelImpl(foodItem: foodGroup.foodItems[indexPath.row])
     }
     
     func ingredientsViewModel(for indexPath: IndexPath) -> IngredientsViewModel {
         IngredientsViewModelImpl(foodItem: foodGroup.foodItems[indexPath.row])
+    }
+    
+    @objc private func ordersListDidChange() {
+        onUpdate?(self)
     }
 }

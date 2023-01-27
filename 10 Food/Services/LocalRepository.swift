@@ -51,13 +51,28 @@ class FavoritesRepository: LocalRepository, FavoritesManager {
 
 class OrdersRepository: LocalRepository, OrdersManager {
     
-    var items: [FoodItem] = []
+    var items: [FoodItem] = [] {
+        didSet { notify() }
+    }
     
     var cartAmount: Int {
         items.reduce(0) { $0 + $1.price }
     }
     
     func count(of foodItem: FoodItem) -> Int {
-        return items.filter { $0.id == foodItem.id }.count
+        items.filter { $0.id == foodItem.id }.count
     }
+    
+    func observe(_ observer: Any, selector: Selector) {
+        NotificationCenter.default.addObserver(observer, selector: selector, name: .orderListDidChange, object: nil)
+    }
+    
+    private func notify() {
+        
+        NotificationCenter.default.post(name: .orderListDidChange, object: nil)
+    }
+}
+
+private extension NSNotification.Name {
+    static let orderListDidChange = NSNotification.Name("orderListDidChange")
 }

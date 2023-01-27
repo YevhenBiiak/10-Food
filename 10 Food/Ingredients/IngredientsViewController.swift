@@ -12,6 +12,7 @@ class IngredientsViewController: UIViewController {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var ingredientsLabel: UILabel!
+    @IBOutlet weak var addButton: UIButton!
     
     var viewModel: IngredientsViewModel!
     
@@ -20,6 +21,7 @@ class IngredientsViewController: UIViewController {
         
         titleLabel.text = viewModel.title
         ingredientsLabel.text = viewModel.ingredients
+        addButton.setTitle(viewModel.price, for: .normal)
         
         viewModel.onUpdate = { [weak self] viewModel in
             if let error = viewModel.error {
@@ -29,11 +31,8 @@ class IngredientsViewController: UIViewController {
         }
     }
     
-    @IBAction func addToppingButtonTapped(_ sender: UIButton) {
-        
-    }
-    
     @IBAction func addToOrderButtonTapped(_ sender: UIButton) {
-        
+        viewModel.addButtonTapped()
+        dismiss(animated: true)
     }
 }

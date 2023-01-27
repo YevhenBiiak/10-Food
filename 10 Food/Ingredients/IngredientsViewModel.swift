@@ -11,14 +11,17 @@ protocol IngredientsViewModel {
     var title: String { get }
     var ingredients: String { get }
     var image: UIImage? { get }
+    var price: String { get }
     var error: String? { get }
     var onUpdate: ((IngredientsViewModel) -> Void)? { get set }
+    func addButtonTapped()
 }
 
 class IngredientsViewModelImpl: IngredientsViewModel {
     
     var title: String
     var ingredients: String
+    var price: String
     var image: UIImage? {
         didSet { onUpdate?(self) }
     }
@@ -29,9 +32,18 @@ class IngredientsViewModelImpl: IngredientsViewModel {
         didSet { onUpdate?(self) }
     }
     
+    private let foodItem: FoodItem
+    private let ordersManager: OrdersManager?
+    
     init(foodItem: FoodItem) {
-        title = foodItem.name
-        ingredients = foodItem.description
+        self.foodItem = foodItem
+        self.ordersManager = UIApplication.shared.sceneDelegate?.ordersRepository
+        
+        title = foodItem.name.uppercased()
+        price = "\(foodItem.price).00 UAH"
+        ingredients = foodItem.description.components(separatedBy: ",")
+            .map { "• " + $0.trimmingCharacters(in: .whitespacesAndNewlines).lowercased() }
+            .joined(separator: "\n")
         
         guard let url = foodItem.imageURL else { return }
         let imageRequest = ImageRequest(url: url)
@@ -44,5 +56,10 @@ class IngredientsViewModelImpl: IngredientsViewModel {
                 self?.error = error.localizedDescription
             }
         }
+    }
+    
+    func addButtonTapped() {
+        guard let count = ordersManager?.count(of: foodItem), count < 10 else { return }
+        ordersManager?.add(foodItem)
     }
 }

@@ -9,6 +9,7 @@ import UIKit
 
 class MenuViewController: UIViewController {
     
+    @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var cartAmountLabel: UILabel!
     @IBOutlet weak var cartButton: UIBarButtonItem!
     
@@ -16,7 +17,7 @@ class MenuViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        cartAmountLabel.text = viewModel.cartAmount
+        title = viewModel.title
         
         viewModel.onUpdate = { [weak self] viewModel in
             self?.cartAmountLabel.text = viewModel.cartAmount

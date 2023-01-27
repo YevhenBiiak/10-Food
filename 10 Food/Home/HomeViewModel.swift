@@ -41,6 +41,7 @@ class HomeViewModelImpl: HomeViewModel {
     init(user: User) {
         self.user = user
         self.ordersManager = UIApplication.shared.sceneDelegate?.ordersRepository
+        self.ordersManager?.observe(self, selector: #selector(ordersListDidChange))
         
         obtainData()
     }
@@ -64,5 +65,8 @@ class HomeViewModelImpl: HomeViewModel {
             }
         }
     }
+    
+    @objc private func ordersListDidChange() {
+        onUpdate?(self)
+    }
 }
-

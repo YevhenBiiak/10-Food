@@ -8,7 +8,6 @@
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
-        <capability name="UIMenu" message="Requires Xcode 11 or later." minToolsVersion="11.0" requiredIntegratedClassName="UICommandDiff"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -325,6 +324,7 @@
                     <connections>
                         <outlet property="cartAmountLabel" destination="sMG-Z2-eFg" id="oyu-mR-vTn"/>
                         <outlet property="cartButton" destination="39a-UE-1OC" id="n9A-mH-EHf"/>
+                        <outlet property="tableView" destination="xL7-Iy-z8c" id="5BM-MO-vgt"/>
                         <segue destination="FTp-jH-cb4" kind="presentation" identifier="ShowIngredients" id="3f1-M6-A2M"/>
                     </connections>
                 </viewController>
@@ -340,68 +340,21 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="783"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Margarita" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Oat-T5-MEt">
-                                <rect key="frame" x="16" y="326" width="361" height="42"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="35"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MARHGERITA" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Oat-T5-MEt">
+                                <rect key="frame" x="16" y="334" width="361" height="36"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="30"/>
                                 <color key="textColor" name="TitleColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ingredients:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uk7-6e-cj2">
-                                <rect key="frame" x="16" y="392" width="361" height="25"/>
-                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="21"/>
-                                <color key="textColor" name="TitleColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Z0H-3D-jHn">
-                                <rect key="frame" x="0.0" y="0.0" width="393" height="310"/>
-                                <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="tyu-kK-fx4">
-                                        <rect key="frame" x="0.0" y="9" width="393" height="16.666666666666664"/>
-                                        <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <imageReference key="image" image="minus" catalog="system" symbolScale="large"/>
-                                        <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="45" scale="large" weight="semibold"/>
-                                    </imageView>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="SHb-NO-SQy">
-                                        <rect key="frame" x="16" y="36" width="361" height="258"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" secondItem="SHb-NO-SQy" secondAttribute="height" multiplier="1.4" id="udC-26-6o0"/>
-                                        </constraints>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                <integer key="value" value="15"/>
-                                            </userDefinedRuntimeAttribute>
-                                        </userDefinedRuntimeAttributes>
-                                    </imageView>
-                                </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstItem="tyu-kK-fx4" firstAttribute="leading" secondItem="Z0H-3D-jHn" secondAttribute="leading" id="6Pr-8O-u9K"/>
-                                    <constraint firstItem="tyu-kK-fx4" firstAttribute="top" secondItem="Z0H-3D-jHn" secondAttribute="top" constant="-10" id="EmS-J1-gFk"/>
-                                    <constraint firstAttribute="trailing" secondItem="tyu-kK-fx4" secondAttribute="trailing" id="Ikx-AB-elI"/>
-                                    <constraint firstAttribute="bottom" secondItem="SHb-NO-SQy" secondAttribute="bottom" constant="16" id="L8z-7h-8Qa"/>
-                                    <constraint firstItem="SHb-NO-SQy" firstAttribute="centerX" secondItem="tyu-kK-fx4" secondAttribute="centerX" id="Re8-F6-VsR"/>
-                                    <constraint firstItem="SHb-NO-SQy" firstAttribute="top" secondItem="tyu-kK-fx4" secondAttribute="bottom" constant="-8" id="Uyq-E9-DfT"/>
-                                    <constraint firstItem="SHb-NO-SQy" firstAttribute="leading" secondItem="Z0H-3D-jHn" secondAttribute="leading" constant="16" id="hAn-uI-xQH"/>
-                                </constraints>
-                            </view>
-                            <button opaque="NO" contentMode="scaleToFill" showsMenuAsPrimaryAction="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h0i-2R-G1C">
-                                <rect key="frame" x="16" y="464" width="361" height="35"/>
-                                <menu key="menu" id="7Gv-AJ-zK2">
-                                    <children>
-                                        <command title="Item 1" id="xpr-br-2jV"/>
-                                        <command title="Item 2" id="lkB-Ee-AoM"/>
-                                    </children>
-                                </menu>
-                                <buttonConfiguration key="configuration" style="plain" title="Additional topping" imagePadding="5">
-                                    <imageReference key="image" image="plus.circle" catalog="system" symbolScale="medium"/>
-                                </buttonConfiguration>
-                                <connections>
-                                    <action selector="addToppingButtonTapped:" destination="FTp-jH-cb4" eventType="touchUpInside" id="eQS-u7-FLt"/>
-                                </connections>
-                            </button>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="tyu-kK-fx4">
+                                <rect key="frame" x="0.0" y="9" width="393" height="16.666666666666664"/>
+                                <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <imageReference key="image" image="minus" catalog="system" symbolScale="large"/>
+                                <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="45" scale="large" weight="semibold"/>
+                            </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="• tomato sauce" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F1W-gL-0vT">
-                                <rect key="frame" x="32" y="425" width="345" height="23"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                <rect key="frame" x="40" y="378" width="337" height="20.333333333333314"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" name="TitleColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -411,8 +364,8 @@
                                     <constraint firstAttribute="height" constant="48" id="8zz-3u-okG"/>
                                 </constraints>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="filled" title="Add to Order">
-                                    <fontDescription key="titleFontDescription" type="system" weight="medium" pointSize="17"/>
+                                <buttonConfiguration key="configuration" style="filled" image="cart.badge.plus" catalog="system" imagePlacement="trailing" title="141 UAH" imagePadding="5">
+                                    <fontDescription key="titleFontDescription" type="boldSystem" pointSize="17"/>
                                 </buttonConfiguration>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -424,32 +377,41 @@
                                     <action selector="addToOrderButtonTapped:" destination="FTp-jH-cb4" eventType="touchUpInside" id="uui-1V-eqP"/>
                                 </connections>
                             </button>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="SHb-NO-SQy">
+                                <rect key="frame" x="16" y="44" width="361" height="258"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="SHb-NO-SQy" secondAttribute="height" multiplier="1.4" id="udC-26-6o0"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="15"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="WZI-cO-Mob"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="h0i-2R-G1C" firstAttribute="leading" secondItem="uk7-6e-cj2" secondAttribute="leading" id="2gL-ue-HSm"/>
-                            <constraint firstItem="Z0H-3D-jHn" firstAttribute="top" secondItem="LHx-oE-FgF" secondAttribute="top" id="3aV-Fv-ytY"/>
                             <constraint firstItem="WZI-cO-Mob" firstAttribute="trailing" secondItem="w0b-zT-ORI" secondAttribute="trailing" constant="32" id="3bA-hB-XUq"/>
-                            <constraint firstItem="F1W-gL-0vT" firstAttribute="leading" secondItem="uk7-6e-cj2" secondAttribute="leading" constant="16" id="58U-hj-r35"/>
+                            <constraint firstItem="WZI-cO-Mob" firstAttribute="trailing" secondItem="tyu-kK-fx4" secondAttribute="trailing" id="9Ux-ke-R3j"/>
                             <constraint firstItem="WZI-cO-Mob" firstAttribute="trailing" secondItem="Oat-T5-MEt" secondAttribute="trailing" constant="16" id="Ahc-PD-2SU"/>
+                            <constraint firstItem="Oat-T5-MEt" firstAttribute="top" secondItem="SHb-NO-SQy" secondAttribute="bottom" constant="32" id="C6k-lA-xaE"/>
+                            <constraint firstItem="tyu-kK-fx4" firstAttribute="top" secondItem="LHx-oE-FgF" secondAttribute="top" constant="-10" id="CKv-wN-q5s"/>
                             <constraint firstItem="w0b-zT-ORI" firstAttribute="leading" secondItem="WZI-cO-Mob" secondAttribute="leading" constant="32" id="GVc-Dz-iyX"/>
-                            <constraint firstItem="h0i-2R-G1C" firstAttribute="top" secondItem="F1W-gL-0vT" secondAttribute="bottom" constant="16" id="IiR-ex-cPs"/>
-                            <constraint firstItem="F1W-gL-0vT" firstAttribute="top" secondItem="uk7-6e-cj2" secondAttribute="bottom" constant="8" id="Ksx-Oh-oii"/>
                             <constraint firstItem="Oat-T5-MEt" firstAttribute="leading" secondItem="WZI-cO-Mob" secondAttribute="leading" constant="16" id="MNp-nh-RtZ"/>
-                            <constraint firstItem="WZI-cO-Mob" firstAttribute="trailing" secondItem="Z0H-3D-jHn" secondAttribute="trailing" id="Nc8-Hm-ZoJ"/>
-                            <constraint firstItem="WZI-cO-Mob" firstAttribute="trailing" secondItem="uk7-6e-cj2" secondAttribute="trailing" constant="16" id="f5K-xe-6D1"/>
-                            <constraint firstItem="Z0H-3D-jHn" firstAttribute="leading" secondItem="WZI-cO-Mob" secondAttribute="leading" id="gOB-41-b0t"/>
-                            <constraint firstItem="uk7-6e-cj2" firstAttribute="top" secondItem="Oat-T5-MEt" secondAttribute="bottom" constant="24" id="nty-pt-fjZ"/>
+                            <constraint firstItem="SHb-NO-SQy" firstAttribute="top" secondItem="tyu-kK-fx4" secondAttribute="bottom" id="V6k-3O-W4K"/>
+                            <constraint firstItem="F1W-gL-0vT" firstAttribute="leading" secondItem="Oat-T5-MEt" secondAttribute="leading" constant="24" id="YrU-V1-cdy"/>
+                            <constraint firstItem="F1W-gL-0vT" firstAttribute="top" secondItem="Oat-T5-MEt" secondAttribute="bottom" constant="8" id="Zww-yB-0dD"/>
+                            <constraint firstItem="WZI-cO-Mob" firstAttribute="trailing" secondItem="SHb-NO-SQy" secondAttribute="trailing" constant="16" id="bFE-fw-btQ"/>
+                            <constraint firstItem="tyu-kK-fx4" firstAttribute="leading" secondItem="WZI-cO-Mob" secondAttribute="leading" id="eKd-oJ-3yT"/>
+                            <constraint firstItem="F1W-gL-0vT" firstAttribute="trailing" secondItem="Oat-T5-MEt" secondAttribute="trailing" id="ean-tj-m1A"/>
                             <constraint firstItem="WZI-cO-Mob" firstAttribute="bottom" secondItem="w0b-zT-ORI" secondAttribute="bottom" constant="32" id="oGq-jc-ZOI"/>
-                            <constraint firstItem="Oat-T5-MEt" firstAttribute="top" secondItem="Z0H-3D-jHn" secondAttribute="bottom" constant="16" id="sKL-Xf-3W9"/>
-                            <constraint firstItem="F1W-gL-0vT" firstAttribute="trailing" secondItem="uk7-6e-cj2" secondAttribute="trailing" id="yNE-be-ksC"/>
-                            <constraint firstItem="h0i-2R-G1C" firstAttribute="trailing" secondItem="uk7-6e-cj2" secondAttribute="trailing" id="yUS-Iv-gNz"/>
-                            <constraint firstItem="uk7-6e-cj2" firstAttribute="leading" secondItem="WZI-cO-Mob" secondAttribute="leading" constant="16" id="zna-bX-5Kp"/>
+                            <constraint firstItem="SHb-NO-SQy" firstAttribute="leading" secondItem="WZI-cO-Mob" secondAttribute="leading" constant="16" id="tOj-9D-Qqr"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="rS0-2O-wSx"/>
                     <connections>
+                        <outlet property="addButton" destination="w0b-zT-ORI" id="Ydc-vf-f5f"/>
                         <outlet property="imageView" destination="SHb-NO-SQy" id="fgl-jH-jNv"/>
                         <outlet property="ingredientsLabel" destination="F1W-gL-0vT" id="DjL-0Q-tOm"/>
                         <outlet property="titleLabel" destination="Oat-T5-MEt" id="vn0-ek-86U"/>
@@ -564,7 +526,7 @@
                                 </constraints>
                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="filled" image="applelogo" catalog="system" title="Conform and Pay" imagePadding="4">
+                                <buttonConfiguration key="configuration" style="filled" image="apple.logo" catalog="system" title="Conform and Pay" imagePadding="4">
                                     <fontDescription key="titleFontDescription" type="system" weight="medium" pointSize="17"/>
                                 </buttonConfiguration>
                                 <userDefinedRuntimeAttributes>
@@ -721,10 +683,10 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="l38-xN-eW4"/>
-        <segue reference="OJn-8O-kIb"/>
+        <segue reference="f73-qf-PEf"/>
     </inferredMetricsTieBreakers>
     <resources>
-        <image name="applelogo" catalog="system" width="105" height="128"/>
+        <image name="apple.logo" catalog="system" width="105" height="128"/>
         <image name="bookmark" catalog="system" width="110" height="128"/>
         <image name="cart" catalog="system" width="128" height="102"/>
         <image name="cart.badge.plus" catalog="system" width="128" height="103"/>
@@ -732,7 +694,6 @@
         <image name="heart" catalog="system" width="128" height="107"/>
         <image name="minus" catalog="system" width="128" height="26"/>
         <image name="minus.square.fill" catalog="system" width="128" height="114"/>
-        <image name="plus.circle" catalog="system" width="128" height="123"/>
         <namedColor name="TitleColor">
             <color red="0.14901960784313725" green="0.18823529411764706" blue="0.37254901960784315" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
