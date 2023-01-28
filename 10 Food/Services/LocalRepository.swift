@@ -8,7 +8,7 @@
 import Foundation
 
 protocol LocalRepository: AnyObject {
-    associatedtype Model: Identifiable
+    associatedtype Model
     var items: [Model] { set get }
     func add(_ item: Model)
     func remove(_ item: Model)
@@ -16,7 +16,7 @@ protocol LocalRepository: AnyObject {
     func save()
 }
 
-extension LocalRepository where Model: Codable {
+extension LocalRepository where Model: Codable & Identifiable {
     
     func add(_ item: Model) {
         items.append(item)
@@ -40,6 +40,8 @@ extension LocalRepository where Model: Codable {
     }
 }
 
+// MARK: - FavoritesRepository
+
 class FavoritesRepository: LocalRepository, FavoritesManager {
     
     var items: [FoodItem] = []
@@ -48,6 +50,8 @@ class FavoritesRepository: LocalRepository, FavoritesManager {
         items.contains(where: { $0.id == foodItem.id })
     }
 }
+
+// MARK: - OrdersRepository
 
 class OrdersRepository: LocalRepository, OrdersManager {
     
@@ -59,6 +63,29 @@ class OrdersRepository: LocalRepository, OrdersManager {
         items.reduce(0) { $0 + $1.price }
     }
     
+    var orderItems: [OrderItem] {
+        var orderItems: [OrderItem] = []
+        for item in items {
+            if let index = orderItems.firstIndex(where: { $0.foodItem.id == item.id }) {
+                let oldItem = orderItems[index]
+                let newItem = OrderItem(foodItem: oldItem.foodItem, qty: oldItem.qty + 1)
+                orderItems[index] = newItem
+            } else {
+                orderItems.append(OrderItem(foodItem: item, qty: 1))
+            }
+        }
+        return orderItems
+    }
+    
+    func remove(_ foodItem: FoodItem) {
+        guard let index = items.firstIndex(where: { $0.id == foodItem.id }) else { return }
+        items.remove(at: index)
+    }
+    
+    func removeAll() {
+        items = []
+    }
+    
     func count(of foodItem: FoodItem) -> Int {
         items.filter { $0.id == foodItem.id }.count
     }
@@ -68,7 +95,6 @@ class OrdersRepository: LocalRepository, OrdersManager {
     }
     
     private func notify() {
-        
         NotificationCenter.default.post(name: .orderListDidChange, object: nil)
     }
 }

@@ -25,7 +25,7 @@ class SignInViewController: UIViewController {
         setupViews()
         
         viewModel.onUpdate = { [weak self] viewModel in
-            if let error = viewModel.signInError {
+            if let error = viewModel.error {
                 self?.showAlert(title: nil, message: error)
             }
             if let homeViewModel = viewModel.homeViewModel {
@@ -95,7 +95,7 @@ extension SignInViewController {
             UIImage(named: "chinese2"),
             UIImage(named: "pizza3"),
             UIImage(named: "chinese3")
-        ]
+        ].compactMap({$0})
         
         for (i, image) in images.enumerated() {
             let width = view.frame.width

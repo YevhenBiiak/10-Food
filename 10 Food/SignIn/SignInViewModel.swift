@@ -6,7 +6,7 @@
 //
 
 protocol SignInViewModel {
-    var signInError: String? { get }
+    var error: String? { get }
     var homeViewModel: HomeViewModel? { get }
     var onUpdate: ((SignInViewModel) -> Void)? { get set }
     func phoneChanged(phone: String?)
@@ -20,7 +20,7 @@ class SignInViewModelImpl: SignInViewModel {
     private var phone: String?
     private var password: String?
     
-    var signInError: String? {
+    var error: String? {
         didSet { onUpdate?(self) }
     }
     var homeViewModel: HomeViewModel? {
@@ -32,9 +32,6 @@ class SignInViewModelImpl: SignInViewModel {
 
     init(authService: AuthService) {
         self.authService = authService
-        if let user = self.authService.currentUser() {
-            homeViewModel = HomeViewModelImpl(user: user)
-        }
     }
     
     func phoneChanged(phone: String?) {
@@ -46,7 +43,7 @@ class SignInViewModelImpl: SignInViewModel {
             let user = try authService.signIn(phone: phone, password: password)
             homeViewModel = HomeViewModelImpl(user: user)
         } catch {
-            signInError = error.localizedDescription
+            self.error = error.localizedDescription
         }
     }
     

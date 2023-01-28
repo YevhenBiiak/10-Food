@@ -14,6 +14,7 @@ protocol HomeViewModel {
     var onUpdate: ((HomeViewModel) -> Void)? { get set }
     func cellViewModel(at indexPath: IndexPath) -> HomeViewCellViewModel
     func menuViewModel(for indexPath: IndexPath) -> MenuViewModel
+    func orderViewModel() -> OrderViewModel
 }
 
 class HomeViewModelImpl: HomeViewModel {
@@ -30,7 +31,9 @@ class HomeViewModelImpl: HomeViewModel {
         didSet { onUpdate?(self) }
     }
     
-    var onUpdate: ((HomeViewModel) -> Void)?
+    var onUpdate: ((HomeViewModel) -> Void)? {
+        didSet { onUpdate?(self)}
+    }
     
     private let user: User
     private let ordersManager: OrdersManager?
@@ -52,6 +55,10 @@ class HomeViewModelImpl: HomeViewModel {
     
     func menuViewModel(for indexPath: IndexPath) -> MenuViewModel {
         MenuViewModelImpl(foodGroup: foodGroups[indexPath.row])
+    }
+    
+    func orderViewModel() -> OrderViewModel {
+        OrderViewModelImpl()
     }
     
     private func obtainData() {

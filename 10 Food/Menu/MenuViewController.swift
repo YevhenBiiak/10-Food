@@ -9,9 +9,7 @@ import UIKit
 
 class MenuViewController: UIViewController {
     
-    @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var cartAmountLabel: UILabel!
-    @IBOutlet weak var cartButton: UIBarButtonItem!
     
     var viewModel: MenuViewModel!
     
@@ -25,13 +23,13 @@ class MenuViewController: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard let indexPath = sender as? IndexPath, segue.identifier == "ShowIngredients" else { return }
-        let ingredientsViewController = segue.destination as? IngredientsViewController
-        ingredientsViewController?.viewModel = viewModel.ingredientsViewModel(for: indexPath)
-    }
-    
-    @IBAction func cartButtonTapped(_ sender: UIBarButtonItem) {
-        
+        if segue.identifier == "ShowOrder" {
+            let menuViewController = segue.destination as? OrderViewController
+            menuViewController?.viewModel = viewModel.orderViewModel()
+        } else if let indexPath = sender as? IndexPath, segue.identifier == "ShowIngredients" {
+            let ingredientsViewController = segue.destination as? IngredientsViewController
+            ingredientsViewController?.viewModel = viewModel.ingredientsViewModel(for: indexPath)
+        }
     }
 }
 

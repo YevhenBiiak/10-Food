@@ -7,8 +7,7 @@
 
 import Foundation
 
-struct OrderItem: Identifiable, Codable {
-    var id = UUID().uuidString
+struct OrderItem {
     let foodItem: FoodItem
     let qty: Int
 }

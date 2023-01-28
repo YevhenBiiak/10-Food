@@ -15,8 +15,10 @@ protocol FavoritesManager {
 
 protocol OrdersManager {
     var cartAmount: Int { get }
+    var orderItems: [OrderItem] { get }
     func add(_ foodItem: FoodItem)
     func remove(_ foodItem: FoodItem)
+    func removeAll()
     func count(of foodItem: FoodItem) -> Int
     func observe(_ observer: Any, selector: Selector)
 }
@@ -61,7 +63,7 @@ class MenuViewCellViewModelImpl: MenuViewCellViewModel {
         title = foodItem.name
         subtitle = foodItem.description
         weight = "\(foodItem.weight) g"
-        price = "\(foodItem.price) UAH"
+        price = "\(foodItem.price).00 ₴"
         
         self.foodItem = foodItem
         self.favoritesManager = UIApplication.shared.sceneDelegate?.favoritesRepository
@@ -81,15 +83,14 @@ class MenuViewCellViewModelImpl: MenuViewCellViewModel {
     }
     
     func favoriteButtonTapped() {
-        isFavorite ? favoritesManager?.add(foodItem)
-                   : favoritesManager?.remove(foodItem)
+        !isFavorite ? favoritesManager?.add(foodItem)
+                    : favoritesManager?.remove(foodItem)
         onUpdate?(self)
     }
     
     func addButtonTapped() {
         guard let count = ordersManager?.count(of: foodItem), count < 10 else { return }
         ordersManager?.add(foodItem)
-        onUpdate?(self)
     }
     
     @objc private func ordersListDidChange() {

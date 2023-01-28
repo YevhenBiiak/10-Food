@@ -24,6 +24,10 @@
 		575BEFCE297D84EF00C80564 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 575BEFCD297D84EF00C80564 /* User.swift */; };
 		575BEFD0297D850F00C80564 /* Credential.swift in Sources */ = {isa = PBXBuildFile; fileRef = 575BEFCF297D850F00C80564 /* Credential.swift */; };
 		575BEFD2297D8F1700C80564 /* FoodItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 575BEFD1297D8F1700C80564 /* FoodItem.swift */; };
+		576725772985833B00D844AA /* faceId.gif in Resources */ = {isa = PBXBuildFile; fileRef = 576725762985833B00D844AA /* faceId.gif */; };
+		5767257B2985846300D844AA /* ApplePayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5767257A2985846300D844AA /* ApplePayViewController.swift */; };
+		5767257D29858F3500D844AA /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5767257C29858F3500D844AA /* SplashViewController.swift */; };
+		5767257F29858FBD00D844AA /* SplashScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5767257E29858FBD00D844AA /* SplashScreen.storyboard */; };
 		5784D9FB297BFCD6006BE261 /* AlertNotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5784D9FA297BFCD6006BE261 /* AlertNotificationService.swift */; };
 		5784D9FE297C1D36006BE261 /* Auth.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5784D9FC297C1D36006BE261 /* Auth.storyboard */; };
 		57855F1429816CA40016F124 /* LocalRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57855F1329816CA40016F124 /* LocalRepository.swift */; };
@@ -68,6 +72,10 @@
 		575BEFCD297D84EF00C80564 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		575BEFCF297D850F00C80564 /* Credential.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Credential.swift; sourceTree = "<group>"; };
 		575BEFD1297D8F1700C80564 /* FoodItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodItem.swift; sourceTree = "<group>"; };
+		576725762985833B00D844AA /* faceId.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = faceId.gif; sourceTree = "<group>"; };
+		5767257A2985846300D844AA /* ApplePayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplePayViewController.swift; sourceTree = "<group>"; };
+		5767257C29858F3500D844AA /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
+		5767257E29858FBD00D844AA /* SplashScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SplashScreen.storyboard; sourceTree = "<group>"; };
 		5784D9FA297BFCD6006BE261 /* AlertNotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertNotificationService.swift; sourceTree = "<group>"; };
 		5784D9FD297C1D36006BE261 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = "10 Food/Base.lproj/Auth.storyboard"; sourceTree = "<group>"; };
 		57855F1329816CA40016F124 /* LocalRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalRepository.swift; sourceTree = "<group>"; };
@@ -146,6 +154,25 @@
 			path = DataModels;
 			sourceTree = "<group>";
 		};
+		576725782985843C00D844AA /* ApplePay */ = {
+			isa = PBXGroup;
+			children = (
+				5767257A2985846300D844AA /* ApplePayViewController.swift */,
+			);
+			path = ApplePay;
+			sourceTree = "<group>";
+		};
+		57988951298597D400A11E75 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				5784D9FC297C1D36006BE261 /* Auth.storyboard */,
+				57E51CCC2975898200B428B7 /* Main.storyboard */,
+				5767257E29858FBD00D844AA /* SplashScreen.storyboard */,
+				57E51CD12975898400B428B7 /* LaunchScreen.storyboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
 		57BE0ACD297859550064A96C /* Services */ = {
 			isa = PBXGroup;
 			children = (
@@ -189,6 +216,7 @@
 			children = (
 				57E51CC62975898200B428B7 /* AppDelegate.swift */,
 				57E51CC82975898200B428B7 /* SceneDelegate.swift */,
+				5767257C29858F3500D844AA /* SplashViewController.swift */,
 				575BEFCA297D84C500C80564 /* DataModels */,
 				57E51CDA2975964000B428B7 /* SignIn */,
 				57E51CE12976BC9C00B428B7 /* SignUp */,
@@ -197,12 +225,12 @@
 				57E51CDD29759A3800B428B7 /* Menu */,
 				57E51CDC2975991100B428B7 /* Ingredients */,
 				57E51CDE29759AD700B428B7 /* Order */,
+				576725782985843C00D844AA /* ApplePay */,
 				57BE0ACD297859550064A96C /* Services */,
 				57E51CEF2978202A00B428B7 /* Extensions */,
-				5784D9FC297C1D36006BE261 /* Auth.storyboard */,
-				57E51CCC2975898200B428B7 /* Main.storyboard */,
+				57988951298597D400A11E75 /* Storyboards */,
 				57E51CCF2975898400B428B7 /* Assets.xcassets */,
-				57E51CD12975898400B428B7 /* LaunchScreen.storyboard */,
+				576725762985833B00D844AA /* faceId.gif */,
 				57E51CD42975898400B428B7 /* Info.plist */,
 			);
 			path = "10 Food";
@@ -343,8 +371,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				5784D9FE297C1D36006BE261 /* Auth.storyboard in Resources */,
+				5767257F29858FBD00D844AA /* SplashScreen.storyboard in Resources */,
 				57E51CD32975898400B428B7 /* LaunchScreen.storyboard in Resources */,
 				57E51CD02975898400B428B7 /* Assets.xcassets in Resources */,
+				576725772985833B00D844AA /* faceId.gif in Resources */,
 				57E51CCE2975898200B428B7 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -362,6 +392,8 @@
 				575BEFCE297D84EF00C80564 /* User.swift in Sources */,
 				575BEFB3297D2B9D00C80564 /* MenuViewCell.swift in Sources */,
 				57E51CC72975898200B428B7 /* AppDelegate.swift in Sources */,
+				5767257D29858F3500D844AA /* SplashViewController.swift in Sources */,
+				5767257B2985846300D844AA /* ApplePayViewController.swift in Sources */,
 				57300C03297940E9008EF33D /* SignUpViewModel.swift in Sources */,
 				57855F162981B1340016F124 /* OrderItem.swift in Sources */,
 				57855F1429816CA40016F124 /* LocalRepository.swift in Sources */,
@@ -552,7 +584,7 @@
 				INFOPLIST_FILE = "10 Food/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Auth;
+				INFOPLIST_KEY_UIMainStoryboardFile = SplashScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
@@ -584,7 +616,7 @@
 				INFOPLIST_FILE = "10 Food/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Auth;
+				INFOPLIST_KEY_UIMainStoryboardFile = SplashScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.5;

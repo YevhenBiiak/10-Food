@@ -17,28 +17,38 @@ class HomeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        cartAmountLabel.text = viewModel.cartAmount
         
         viewModel.onUpdate = { [weak self] viewModel in
             if let error = viewModel.error {
                 UIApplication.shared.window?.rootViewController?.showAlert(title: "Error", message: error)
             }
             self?.cartAmountLabel.text = viewModel.cartAmount
-            self?.tableView.reloadData()
+            DispatchQueue.main.async {
+                self?.reloadData(animated: true)
+            }
         }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard let indexPath = sender as? IndexPath, segue.identifier == "ShowMenu" else { return }
-        let menuViewController = segue.destination as? MenuViewController
-        menuViewController?.viewModel = viewModel.menuViewModel(for: indexPath)
-    }
-    
-    @IBAction func cartButtonTapped(_ sender: UIBarButtonItem) {
-        
+        if segue.identifier == "ShowOrder" {
+            let menuViewController = segue.destination as? OrderViewController
+            menuViewController?.viewModel = viewModel.orderViewModel()
+        } else if let indexPath = sender as? IndexPath, segue.identifier == "ShowMenu" {
+            let menuViewController = segue.destination as? MenuViewController
+            menuViewController?.viewModel = viewModel.menuViewModel(for: indexPath)
+        }
     }
     
     @IBAction func unwindToHome(_ segue: UIStoryboardSegue) {}
+    
+    private func reloadData(animated: Bool = false) {
+        if animated {
+            let indexSet = IndexSet(integersIn: 0..<tableView.numberOfSections)
+            tableView.reloadSections(indexSet, with: .automatic)
+        } else {
+            tableView.reloadData()
+        }
+    }
 }
 
 // MARK: - UITableViewDataSource

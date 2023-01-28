@@ -23,14 +23,14 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         favoritesRepository.fetch()
         
         let navigationController = window?.rootViewController as? UINavigationController
-        let signInViewController = navigationController?.viewControllers.first as? SignInViewController
+        let splashViewController = navigationController?.viewControllers.first as? SplashViewController
         
         let credentialStorage = DefaultsCredentialStorage()
         let notificationService = AlertNotificationService()
         let authService = AuthServiceImpl(credentialStorage: credentialStorage,
                                           notificationService: notificationService)
         
-        signInViewController?.viewModel = SignInViewModelImpl(authService: authService)
+        splashViewController?.authService = authService
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {

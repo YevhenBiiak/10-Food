@@ -40,7 +40,7 @@ class IngredientsViewModelImpl: IngredientsViewModel {
         self.ordersManager = UIApplication.shared.sceneDelegate?.ordersRepository
         
         title = foodItem.name.uppercased()
-        price = "\(foodItem.price).00 UAH"
+        price = "\(foodItem.price).00 ₴"
         ingredients = foodItem.description.components(separatedBy: ",")
             .map { "• " + $0.trimmingCharacters(in: .whitespacesAndNewlines).lowercased() }
             .joined(separator: "\n")

@@ -14,21 +14,14 @@ protocol MenuViewModel {
     var onUpdate: ((MenuViewModel) -> Void)? { get set }
     func cellViewModel(at indexPath: IndexPath) -> MenuViewCellViewModel
     func ingredientsViewModel(for indexPath: IndexPath) -> IngredientsViewModel
+    func orderViewModel() -> OrderViewModel
 }
 
 class MenuViewModelImpl: MenuViewModel {
     
-    var title: String {
-        foodGroup.name
-    }
-    
-    var cartAmount: String {
-        "\(ordersManager?.cartAmount ?? 0)"
-    }
-    
-    var foodCount: Int {
-        foodGroup.foodItems.count
-    }
+    var title:      String { foodGroup.name }
+    var cartAmount: String { "\(ordersManager?.cartAmount ?? 0)" }
+    var foodCount:  Int    { foodGroup.foodItems.count }
     
     var onUpdate: ((MenuViewModel) -> Void)? {
         didSet { onUpdate?(self) }
@@ -49,6 +42,10 @@ class MenuViewModelImpl: MenuViewModel {
     
     func ingredientsViewModel(for indexPath: IndexPath) -> IngredientsViewModel {
         IngredientsViewModelImpl(foodItem: foodGroup.foodItems[indexPath.row])
+    }
+    
+    func orderViewModel() -> OrderViewModel {
+        OrderViewModelImpl()
     }
     
     @objc private func ordersListDidChange() {

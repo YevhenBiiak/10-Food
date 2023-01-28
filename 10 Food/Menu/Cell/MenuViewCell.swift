@@ -47,6 +47,7 @@ class MenuViewCell: UITableViewCell {
     @IBAction func favoriteButtonTapped(_ sender: UIButton) {
         viewModel.favoriteButtonTapped()
     }
+    
     @IBAction func addToOrderButtonTapped(_ sender: UIButton) {
         viewModel.addButtonTapped()
     }
