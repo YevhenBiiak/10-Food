@@ -25,7 +25,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let navigationController = window?.rootViewController as? UINavigationController
         let splashViewController = navigationController?.viewControllers.first as? SplashViewController
         
-        let credentialStorage = DefaultsCredentialStorage()
+        let credentialStorage = KeychainCredentialStorage()
         let notificationService = AlertNotificationService()
         let authService = AuthServiceImpl(credentialStorage: credentialStorage,
                                           notificationService: notificationService)

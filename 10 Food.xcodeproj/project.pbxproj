@@ -28,13 +28,14 @@
 		5767257B2985846300D844AA /* ApplePayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5767257A2985846300D844AA /* ApplePayViewController.swift */; };
 		5767257D29858F3500D844AA /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5767257C29858F3500D844AA /* SplashViewController.swift */; };
 		5767257F29858FBD00D844AA /* SplashScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5767257E29858FBD00D844AA /* SplashScreen.storyboard */; };
+		576D94412987D644007E8807 /* KeychainWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 576D94402987D644007E8807 /* KeychainWrapper.swift */; };
 		5784D9FB297BFCD6006BE261 /* AlertNotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5784D9FA297BFCD6006BE261 /* AlertNotificationService.swift */; };
 		5784D9FE297C1D36006BE261 /* Auth.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5784D9FC297C1D36006BE261 /* Auth.storyboard */; };
 		57855F1429816CA40016F124 /* LocalRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57855F1329816CA40016F124 /* LocalRepository.swift */; };
 		57855F162981B1340016F124 /* OrderItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57855F152981B1340016F124 /* OrderItem.swift */; };
 		57BE0ACF29785A460064A96C /* SignInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57BE0ACE29785A460064A96C /* SignInViewModel.swift */; };
 		57BE0AD129785A640064A96C /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57BE0AD029785A640064A96C /* AuthService.swift */; };
-		57BE0AD329792ACF0064A96C /* DefaultsCredentialStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57BE0AD229792ACE0064A96C /* DefaultsCredentialStorage.swift */; };
+		57BE0AD329792ACF0064A96C /* CredentialStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57BE0AD229792ACE0064A96C /* CredentialStorage.swift */; };
 		57C84EE82980430A0017E91F /* NetworkRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57C84EE72980430A0017E91F /* NetworkRequest.swift */; };
 		57C84EEA2980431C0017E91F /* ImageRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57C84EE92980431C0017E91F /* ImageRequest.swift */; };
 		57C84EEC298043510017E91F /* FoodRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57C84EEB298043510017E91F /* FoodRequest.swift */; };
@@ -76,13 +77,14 @@
 		5767257A2985846300D844AA /* ApplePayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplePayViewController.swift; sourceTree = "<group>"; };
 		5767257C29858F3500D844AA /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
 		5767257E29858FBD00D844AA /* SplashScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SplashScreen.storyboard; sourceTree = "<group>"; };
+		576D94402987D644007E8807 /* KeychainWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainWrapper.swift; sourceTree = "<group>"; };
 		5784D9FA297BFCD6006BE261 /* AlertNotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertNotificationService.swift; sourceTree = "<group>"; };
 		5784D9FD297C1D36006BE261 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = "10 Food/Base.lproj/Auth.storyboard"; sourceTree = "<group>"; };
 		57855F1329816CA40016F124 /* LocalRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalRepository.swift; sourceTree = "<group>"; };
 		57855F152981B1340016F124 /* OrderItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderItem.swift; sourceTree = "<group>"; };
 		57BE0ACE29785A460064A96C /* SignInViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewModel.swift; sourceTree = "<group>"; };
 		57BE0AD029785A640064A96C /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
-		57BE0AD229792ACE0064A96C /* DefaultsCredentialStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultsCredentialStorage.swift; sourceTree = "<group>"; };
+		57BE0AD229792ACE0064A96C /* CredentialStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CredentialStorage.swift; sourceTree = "<group>"; };
 		57C84EE72980430A0017E91F /* NetworkRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkRequest.swift; sourceTree = "<group>"; };
 		57C84EE92980431C0017E91F /* ImageRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageRequest.swift; sourceTree = "<group>"; };
 		57C84EEB298043510017E91F /* FoodRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodRequest.swift; sourceTree = "<group>"; };
@@ -180,7 +182,8 @@
 				57BE0AD029785A640064A96C /* AuthService.swift */,
 				57855F1329816CA40016F124 /* LocalRepository.swift */,
 				5784D9FA297BFCD6006BE261 /* AlertNotificationService.swift */,
-				57BE0AD229792ACE0064A96C /* DefaultsCredentialStorage.swift */,
+				57BE0AD229792ACE0064A96C /* CredentialStorage.swift */,
+				576D94402987D644007E8807 /* KeychainWrapper.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -413,8 +416,9 @@
 				575BEFB7297D2EEC00C80564 /* IngredientsViewModel.swift in Sources */,
 				57E51CE42976BF3F00B428B7 /* SignUpViewController.swift in Sources */,
 				57300C05297943A8008EF33D /* VerificationViewModel.swift in Sources */,
-				57BE0AD329792ACF0064A96C /* DefaultsCredentialStorage.swift in Sources */,
+				57BE0AD329792ACF0064A96C /* CredentialStorage.swift in Sources */,
 				57E51CEC2976BF8700B428B7 /* IngredientsViewController.swift in Sources */,
+				576D94412987D644007E8807 /* KeychainWrapper.swift in Sources */,
 				5784D9FB297BFCD6006BE261 /* AlertNotificationService.swift in Sources */,
 				57C84EEC298043510017E91F /* FoodRequest.swift in Sources */,
 				57BE0ACF29785A460064A96C /* SignInViewModel.swift in Sources */,
